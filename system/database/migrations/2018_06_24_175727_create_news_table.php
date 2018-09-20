@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateNewsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('news', function (Blueprint $table) {
+            $table->increments('id');
+            $table->uuid('uid');
+            $table->integer('category_id');
+            $table->string('title')->nullable();
+            $table->string('url')->nullable();
+            $table->string('headline')->nullable();
+            $table->text('content')->nullable();
+            $table->string('poster')->nullable();
+            $table->integer('featured')->nullable();
+            $table->integer('published')->nullable();
+            $table->integer('published_by')->nullable();
+            $table->datetime('published_at')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('news');
+    }
+}
